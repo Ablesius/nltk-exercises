@@ -47,6 +47,7 @@ from nltk.corpus import brown
 	# 2. Encode any of the trees presented in this chapter
 	# as a labeled bracketing and use nltk.Tree() to check
 	# that it is well-formed. Now use draw() to display the tree.
+from nltk.tree import Tree
 
 	# 3. As in (a) above, draw a tree for
 	# "The woman saw a man last Thursday". (7 Punkte)
