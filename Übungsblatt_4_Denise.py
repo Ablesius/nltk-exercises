@@ -36,7 +36,7 @@ grammar = nltk.CFG.fromstring("""
 	CON -> 'and'
 """)
 
-sent = [("old"), ("men"), ("and"), ("women")]
+sent = [("old", ("men"), ("and"), ("women")]
 
 # Lesart 1: old men and old women (das Adjektiv wird auf beide Nomen bezogen und
 # dominiert die Nomen = steht im Baum oben).
