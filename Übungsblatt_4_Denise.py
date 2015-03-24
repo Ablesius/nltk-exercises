@@ -1,12 +1,26 @@
-# Übungsblatt_4.py
+#  Übungsblatt_4_Denise.py
 #
-# Alexander Blesius & Denise Schmidt
+#  Copyright 2015 Alexander Blesius <onkel-pflaume@web.de>
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#  MA 02110-1301, USA.
 #
 #
-#
-# Aufgabe 3
 
-import nltk,re,pprint
+
+import nltk
 
 from nltk import word_tokenize
 
@@ -31,7 +45,7 @@ nltk.pos_tag(text)
 
 grammar1 = nltk.ContextFreeGrammar.fromstring("""
 PHRASE -> AdjP | NP CON NP
-NP -> Adj N | N 
+NP -> Adj N | N
 AdjP -> Adj Obj
 Obj -> N CON N
 Adj -> 'old'
@@ -45,7 +59,7 @@ rd_parser = nltk.RecursiveDescentParser(grammar1)
 
 for tree in rd_parser.parse(sent):
 	print(tree)
-        
+
 # Lesart 1: old men and old women (das Adjektiv wird auf beide Nomen bezogen und
 # dominiert die Nomen = steht im Baum oben).
 # Lesart 2: die Phrase besteht aus zwei "unabhängigen Nomen", nämlich alten Männern
@@ -144,4 +158,4 @@ print (sent)
 # suspicious nor confiding, neither grateful nor ungrateful, never to be
 # unprepared for an event, nor taken unawares by an idea".
 # Die Teilsätze an sich weisen keine besonders prägnanten oder ungewöhnlichen
-# Strukturen auf. 
+# Strukturen auf.
