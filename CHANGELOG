@@ -1,3 +1,7 @@
-Di 24. Mär 15:11:10 CET 2015 edited indentation, moved exercise descriptions for reading convenience
-Di 24. Mär 15:40:41 CET 2015 shortened open+read functions
-Di 24. Mär 16:13:15 CET 2015 rewrote code to look better, didn\'t work
+Di 24. Mär 15:11:10 CET 2015	edited indentation, moved exercise descriptions for reading convenience
+Di 24. Mär 15:40:41 CET 2015	shortened open+read functions
+Di 24. Mär 16:13:15 CET 2015	rewrote code to look better, didn\'t work
+Mi 25. Mär 11:04:43 CET 2015	removed alternative versions for same functionality
+Mi 25. Mär 11:07:58 CET 2015	moved all imports to top of document
+Mi 25. Mär 15:38:55 CET 2015 	returned to local files instead of URLs since they were more easily readable
+Mi 25. Mär 16:24:30 CET 2015 	added Sarah's version to repo
