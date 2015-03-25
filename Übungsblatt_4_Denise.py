@@ -26,6 +26,7 @@ from nltk import word_tokenize
 from nltk.corpus import brown
 from nltk.tree import Tree
 # from urllib import request
+from collections import defaultdict
 
 # Übung 3
     # Tokenize and tag the following sentence:
@@ -44,7 +45,7 @@ nltk.pos_tag(text)
 
 #Aufgabe 34
 # Tipp Karlova: defaultdict (S. 194-198, Kapitel 5, ab „Incrementally Updating a Dictionary“).
-
+print "just some random text"
     # There are 264 distinct words in the Brown Corpus having exactly three possible tags.
 	# 1. Print a table with the integers 1..10 in one column,
 	    # and the number of distinct words in the corpus having
