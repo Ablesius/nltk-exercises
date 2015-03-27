@@ -1,0 +1,7 @@
+(10:39:35) Philipp Skrinjar: also ist erste aufgabe quasi
+(10:40:34) Philipp Skrinjar: tabelle erstellen mit 1,2,3,4,...,10 zeilen und dann in der spalte 1 kommt dann die anzahl der brown corpus wörter die 1 tag haben ?
+(10:42:54) Philipp Skrinjar: dann machst ne abfrage
+(10:43:07) Philipp Skrinjar: und kannst die zeile als variable nehmen dann sparst du dir bissl code
+
+Aufg. 2:
+10:44:56) Philipp Skrinjar: aber so wie das aussieht kann so ein corpus wort mehrere tags haben und dann musst du das nehmen was die meisten hat und für jeden dieser tags einen satz drucken oder so ähnlich

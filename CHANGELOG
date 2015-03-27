@@ -5,3 +5,6 @@ Mi 25. Mär 11:04:43 CET 2015	removed alternative versions for same functionalit
 Mi 25. Mär 11:07:58 CET 2015	moved all imports to top of document
 Mi 25. Mär 15:38:55 CET 2015 	returned to local files instead of URLs since they were more easily readable
 Mi 25. Mär 16:24:30 CET 2015 	added Sarah's version to repo
+Mi 25. Mär 19:09:12 CET 2015 	hid some files, moved some to .gitignore
+Mi 25. Mär 19:09:38 CET 2015 	TODO	commit changes to git
+Do 26. Mär 11:04:57 CET 2015 	added Flip_Tipps
