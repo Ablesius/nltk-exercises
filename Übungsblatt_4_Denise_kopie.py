@@ -45,7 +45,7 @@ nltk.pos_tag(text)
 
 #Aufgabe 34
 # Tipp Karlova: defaultdict (S. 194-198, Kapitel 5, ab „Incrementally Updating a Dictionary“).
-print("just some random text")
+print "just some random text"
     # There are 264 distinct words in the Brown Corpus having exactly three possible tags.
 	# 1. Print a table with the integers 1..10 in one column,
 	    # and the number of distinct words in the corpus having
@@ -91,12 +91,12 @@ tree3 = nltk.Tree('V', ['saw'])
 tree4 = nltk.Tree('VP', [tree3, tree2])
 tree5 = nltk.Tree('S', [tree1, tree4])
 print(tree5)
-tree5.draw()
+# tree5.draw()
 
 # ODER
 sent3 = Tree('S', [Tree('NP', ['Mary']), Tree('VP', [Tree('V', ['saw']), Tree('NP', ['Bob'])])])
 print(sent3)
-sent3.draw()
+# sent3.draw()
 
     # 5.3
 grammar2 = nltk.CFG.fromstring("""
@@ -157,7 +157,7 @@ text_sum = nltk.sent_tokenize(texts_cleaned)
 
 longest_len = max([len(s) for s in text_sum])	# len(s): length of a string (single sentence)
 sent4 = [s for s in text_sum if len(s) == longest_len]
-print(sent4)
+print (sent4)
 
 # Output: 'Ever to look beyond the present moment, to foresee the ways of
 #Destiny, to care so little for power that he only retains it because he is

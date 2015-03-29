@@ -23,7 +23,7 @@
 			"file": "Übungsblatt_4_Denise.py",
 			"settings":
 			{
-				"buffer_size": 6642,
+				"buffer_size": 7034,
 				"line_ending": "Unix"
 			}
 		},
@@ -60,6 +60,7 @@
 	},
 	"file_history":
 	[
+		"/home/alex/Dokumente/CLTT/Seminare/NLP/Git/Übungsblatt_4_Denise.py",
 		"/home/alex/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
 		"/home/alex/Dokumente/CLTT/Seminare/NLP/Git/.gitignore",
 		"/home/alex/.config/sublime-text-2/Packages/User/Preferences.sublime-settings"
@@ -70,7 +71,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -112,28 +113,15 @@
 					"file": "Übungsblatt_4_Denise.py",
 					"settings":
 					{
-						"buffer_size": 6642,
+						"buffer_size": 7034,
 						"regions":
 						{
-							"mark":
-							{
-								"flags": 144,
-								"icon": "dot",
-								"regions":
-								[
-									[
-										1996,
-										1996
-									]
-								],
-								"scope": "mark"
-							}
 						},
 						"selection":
 						[
 							[
-								5635,
-								5635
+								0,
+								0
 							]
 						],
 						"settings":
@@ -143,7 +131,8 @@
 								80
 							],
 							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 2624.0,
@@ -180,37 +169,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 741.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 0,
-					"file": "Übungsblatt_4_Denise.py",
-					"settings":
-					{
-						"buffer_size": 6642,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"rulers":
-							[
-								80
-							],
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2280.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
