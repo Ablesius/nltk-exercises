@@ -45,11 +45,24 @@ nltk.pos_tag(text)
 
 #Aufgabe 34
 # Tipp Karlova: defaultdict (S. 194-198, Kapitel 5, ab „Incrementally Updating a Dictionary“).
-print("just some random text")
     # There are 264 distinct words in the Brown Corpus having exactly three possible tags.
 	# 1. Print a table with the integers 1..10 in one column,
 	    # and the number of distinct words in the corpus having
 	    # 1..10 distinct tags in the other column.
+brown_tagged = brown.tagged_words(tagset='universal')	# lower all words!
+dict = defaultdict(list)
+for (word, tag) in brown_tagged:
+    if dict[word] == []:
+        dict[word] = [tag]
+        continue
+    n = 0
+    print("word is", repr(word), dict[word])
+    for t in dict[word]:
+        if t == tag:
+            break
+        n += 1
+        if len(dict[word]) == n:
+            dict[word] = dict[word].append(tag)
 
 	# 2. For the word with the greatest number of distinct tags,
 	    # print out sentences from the corpus containing the word,

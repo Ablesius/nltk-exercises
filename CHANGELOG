@@ -6,5 +6,9 @@ Mi 25. Mär 11:07:58 CET 2015	moved all imports to top of document
 Mi 25. Mär 15:38:55 CET 2015 	returned to local files instead of URLs since they were more easily readable
 Mi 25. Mär 16:24:30 CET 2015 	added Sarah's version to repo
 Mi 25. Mär 19:09:12 CET 2015 	hid some files, moved some to .gitignore
-Mi 25. Mär 19:09:38 CET 2015 	TODO	commit changes to git
+Mi 25. Mär 19:09:38 CET 2015 	TODO:	commit changes to git
 Do 26. Mär 11:04:57 CET 2015 	added Flip_Tipps
+So 29. Mär 17:15:55 CEST 2015 	created empty hash (dictionary) for list of distinct words and tags
+So 29. Mär 17:44:24 CEST 2015 	TODO:	lower all words in (word, tag) in brown_tagged (l. 52)
+So 29. Mär 23:59:24 CEST 2015 	added for-loop to create dict from brown.tagged
+Mo 30. Mär 00:40:24 CEST 2015 	TODO:	NoneTypeError
