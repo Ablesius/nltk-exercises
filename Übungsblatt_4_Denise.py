@@ -40,28 +40,37 @@ nltk.pos_tag(text)
 # Bei wind/Verb wird das i als ei ausgesprochen.
 # Bei wind/Nomen wird das i als i ausgesprochen.
 
-#Aufgabe 34
+# Aufgabe 34
 # Tipp Karlova: defaultdict (S. 194-198, Kapitel 5, ab „Incrementally Updating a Dictionary“).
 # There are 264 distinct words in the Brown Corpus having exactly three possible tags.
 # 1. Print a table with the integers 1..10 in one column,
 # and the number of distinct words in the corpus having
 # 1..10 distinct tags in the other column.
 brown_tagged = brown.tagged_words(tagset='universal')
-dict = defaultdict(list)
+brown_tagged_dict = defaultdict(list)
 for (word, tag) in brown_tagged:
     word = word.lower()
-    if dict[word] == []:
-        dict[word] = [tag]
+    if brown_tagged_dict[word] == []:
+        brown_tagged_dict[word] = [tag]
         continue
     n = 0
-    for t in dict[word]:
+    for t in brown_tagged_dict[word]:
         if t == tag:
             break
         n += 1
-        if len(dict[word]) == n:
-            dict[word].append(tag)
+        if len(brown_tagged_dict[word]) == n:
+            brown_tagged_dict[word].append(tag)
             break
 
+def longest_key(dictionary):
+    """returns a tuple (key, int) consisting of the key with the most values in the dictionary"""
+    max = 0
+    key = ""
+    for k in dictionary.keys():
+        if len(dictionary[k]) > max:
+            max = len(dictionary[k])
+            key = k
+    return key, max
 
             # 2. For the word with the greatest number of distinct tags,
             # print out sentences from the corpus containing the word,
