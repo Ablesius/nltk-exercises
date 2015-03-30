@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#  Übungsblatt_4_Denise.py
-#  Copyright 2015 Alexander Blesius <onkel-pflaume@web.de>, Denise Schmidt <denise.schmidt@lehramt.uni-giessen.de>
+# Übungsblatt_4_Denise.py
+# Copyright 2015 Alexander Blesius <onkel-pflaume@web.de>, Denise Schmidt <denise.schmidt@lehramt.uni-giessen.de>
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -18,9 +18,6 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 
-# TODO:
-    # find out why longest sentence differs from Denise's version
-
 import nltk, re
 from nltk import word_tokenize
 from nltk.corpus import brown
@@ -29,9 +26,9 @@ from nltk.tree import Tree
 from collections import defaultdict
 
 # Übung 3
-    # Tokenize and tag the following sentence:
-        # They wind back the clock, while we chase after the wind.
-    # What different pronunciations and parts of speech are involved?
+# Tokenize and tag the following sentence:
+# They wind back the clock, while we chase after the wind.
+# What different pronunciations and parts of speech are involved?
 text = word_tokenize("They wind back the clock, while we chase after the wind.")
 nltk.pos_tag(text)
 
@@ -45,11 +42,11 @@ nltk.pos_tag(text)
 
 #Aufgabe 34
 # Tipp Karlova: defaultdict (S. 194-198, Kapitel 5, ab „Incrementally Updating a Dictionary“).
-    # There are 264 distinct words in the Brown Corpus having exactly three possible tags.
-        # 1. Print a table with the integers 1..10 in one column,
-            # and the number of distinct words in the corpus having
-            # 1..10 distinct tags in the other column.
-brown_tagged = brown.tagged_words(tagset='universal')   # lower all words!
+# There are 264 distinct words in the Brown Corpus having exactly three possible tags.
+# 1. Print a table with the integers 1..10 in one column,
+# and the number of distinct words in the corpus having
+# 1..10 distinct tags in the other column.
+brown_tagged = brown.tagged_words(tagset='universal')
 dict = defaultdict(list)
 for (word, tag) in brown_tagged:
     word = word.lower()
@@ -66,14 +63,14 @@ for (word, tag) in brown_tagged:
             break
 
 
-        # 2. For the word with the greatest number of distinct tags,
+            # 2. For the word with the greatest number of distinct tags,
             # print out sentences from the corpus containing the word,
             # one for each possible tag. (15 Punkte)
 
 
-# Übung 5
-    # 1. Write code to produce two trees, one for each reading
-        # of the phrase "old men and women"
+            # Übung 5
+            # 1. Write code to produce two trees, one for each reading
+            # of the phrase "old men and women"
 grammar1 = nltk.CFG.fromstring("""
     PHRASE -> AdjP | NP CON NP
     NP -> Adj N | N
@@ -92,14 +89,14 @@ for tree in rd_parser.parse(sent1):
     print(tree)
 
 # Lesart 1: old men and old women (das Adjektiv wird auf beide Nomen bezogen und
-    # dominiert die Nomen = steht im Baum oben).
+# dominiert die Nomen = steht im Baum oben).
 # Lesart 2: die Phrase besteht aus zwei "unabhängigen Nomen", nämlich alten Männern
-    # und Frauen aller Altersstufen.
+# und Frauen aller Altersstufen.
 
-    # 5.2
-        # Encode any of the trees presented in this chapter
-        # as a labeled bracketing and use nltk.Tree() to check
-        # that it is well-formed. Now use draw() to display the tree.
+# 5.2
+# Encode any of the trees presented in this chapter
+# as a labeled bracketing and use nltk.Tree() to check
+# that it is well-formed. Now use draw() to display the tree.
 tree1 = nltk.Tree('NP', ['Mary'])
 tree2 = nltk.Tree('NP', ['Bob'])
 tree3 = nltk.Tree('V', ['saw'])
@@ -113,7 +110,7 @@ sent3 = Tree('S', [Tree('NP', ['Mary']), Tree('VP', [Tree('V', ['saw']), Tree('N
 print(sent3)
 sent3.draw()
 
-    # 5.3
+# 5.3
 grammar2 = nltk.CFG.fromstring("""
     S -> NP VP | NP VP Time
     NP -> Det N
@@ -137,12 +134,12 @@ for tree in rd_parser.parse(sent2):
 # Lesart 1: Sie sah ihn zuletzt Dienstag.
 # Lesart 2: Sie sah ihn letzten Dienstag.
 # Lesart mit saw = sägen: überprüft, aber da Vergangenheit vorliegt, keine
-    # Lesart möglich, weil saw im Präsens (Vergangenheit sawed) keinen Sinn ergibt
+# Lesart möglich, weil saw im Präsens (Vergangenheit sawed) keinen Sinn ergibt
 
 #Aufgabe 25
-    # Tipp Karlova:
-        # Finden Sie zuerst den längsten Satz in den von Ihnen ausgewählten Texten (3-5).
-        # Versuchen Sie diesen Satz zu parsen (optional).
+# Tipp Karlova:
+# Finden Sie zuerst den längsten Satz in den von Ihnen ausgewählten Texten (3-5).
+# Versuchen Sie diesen Satz zu parsen (optional).
 
 # urllist = ["http://www.gutenberg.org/ebooks/1659.txt.utf-8", "http://www.gutenberg.org/ebooks/48371.txt.utf-8", "http://www.gutenberg.org/ebooks/3102.txt.utf-8"]
 # textlist = []
@@ -150,9 +147,9 @@ for tree in rd_parser.parse(sent2):
 # text2 = ""
 # text3 = ""
 # for each in [text1, text2, text3]:
-    # each = request.urlopen(urllist[x]).read().decode('utf8')
+# each = request.urlopen(urllist[x]).read().decode('utf8')
 # for x in range(0, 3):
-    # textlist.append(request.urlopen(urllist[x]).read().decode('utf8'))
+# textlist.append(request.urlopen(urllist[x]).read().decode('utf8'))
 
 gutenb1 = open('CountryDoctor_deBalzac.txt')
 text1 = gutenb1.read()
@@ -170,7 +167,8 @@ texts_cleaned = re.sub(r'\n', ' ', texts_all)
 
 text_sum = nltk.sent_tokenize(texts_cleaned)
 
-longest_len = max([len(s) for s in text_sum])   # len(s): length of a string (single sentence)
+# TODO: find out why longest sentence differs from Denise's version
+longest_len = max([len(s) for s in text_sum])  # len(s): length of a string (single sentence)
 sent4 = [s for s in text_sum if len(s) == longest_len]
 print(sent4)
 

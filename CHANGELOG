@@ -12,3 +12,5 @@ So 29. Mär 17:15:55 CEST 2015 	created empty hash (dictionary) for list of dist
 So 29. Mär 17:44:24 CEST 2015 	TODO:	lower all words in (word, tag) in brown_tagged (l. 52)
 So 29. Mär 23:59:24 CEST 2015 	added for-loop to create dict from brown.tagged
 Mo 30. Mär 00:40:24 CEST 2015 	TODO:	NoneTypeError
+Mo 30. Mär 12:39:55 CEST 2015 	DONE:	lower words
+Mo 30. Mär 12:40:09 CEST 2015 	DONE:	NoneTypeError
