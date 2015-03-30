@@ -63,15 +63,16 @@ for (word, tag) in brown_tagged:
             break
 
 def longest_key(dictionary):
-    """returns a tuple (key, int) consisting of the key with the most values in the dictionary"""
-    max = 0
-    key = ""
+    """returns a tuple (maxkey, int) consisting of the maxkey with the most values in the dictionary"""
+    maxlen = 0
+    maxkey = ""
     for k in dictionary.keys():
-        if len(dictionary[k]) > max:
-            max = len(dictionary[k])
-            key = k
-    return key, max
+        if len(dictionary[k]) > maxlen:
+            maxlen = len(dictionary[k])
+            maxkey = k
+    return maxkey, maxlen
 
+print('foo')
             # 2. For the word with the greatest number of distinct tags,
             # print out sentences from the corpus containing the word,
             # one for each possible tag. (15 Punkte)
