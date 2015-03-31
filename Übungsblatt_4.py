@@ -18,12 +18,26 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 
+# imports
 import nltk, re
 from nltk import word_tokenize
 from nltk.corpus import brown
 from nltk.tree import Tree
-# from urllib import request
 from collections import defaultdict
+from tabulate import tabulate
+# from urllib import request
+
+# methods
+def longest_key(dictionary):
+    """returns a tuple (maxkey, int) consisting of the key with the most values in the dictionary"""
+    maxlen = 0
+    maxkey = ""
+    for k in dictionary.keys():
+        if len(dictionary[k]) > maxlen:
+            maxlen = len(dictionary[k])
+            maxkey = k
+    return maxlen, maxkey
+
 
 # Übung 3
 # Tokenize and tag the following sentence:
@@ -63,21 +77,23 @@ for (word, tag) in brown_tagged:
             brown_tagged_dict[word].append(tag)
             break
 
-def longest_key(dictionary):
-    """returns a tuple (maxkey, int) consisting of the maxkey with the most values in the dictionary"""
-    maxlen = 0
-    maxkey = ""
-    for k in dictionary.keys():
-        if len(dictionary[k]) > maxlen:
-            maxlen = len(dictionary[k])
-            maxkey = k
-    return maxkey, maxlen
+# table = [["Sun",696000,1989100000],["Earth",6371,5973.6],
+#          ["Moon",1737,73.5],["Mars",3390,641.85]]
+# print tabulate(table, headers=)
+# https://pypi.python.org/pypi/tabulate
+# -----  ------  -------------
+# Sun    696000     1.9891e+09
+# Earth    6371  5973.6
+# Moon     1737    73.5
+# Mars     3390   641.85
+# -----  ------  -------------
+dist_words_table = [set([len(tags) for tags in brown_tagged_dict.values()])]
 
-print('foo')
+print(tabulate(dist_words_table, headers=['# tags', '# distinct words']))
+
             # 2. For the word with the greatest number of distinct tags,
             # print out sentences from the corpus containing the word,
             # one for each possible tag. (15 Punkte)
-
 
             # Übung 5
             # 1. Write code to produce two trees, one for each reading
@@ -92,7 +108,7 @@ grammar1 = nltk.CFG.fromstring("""
     CON -> 'and'
 """)
 
-sent1 = [("old"), ("men"), ("and"), ("women")]
+sent1 = ['old', 'men', 'and', 'women']
 
 rd_parser = nltk.RecursiveDescentParser(grammar1)
 
@@ -112,13 +128,17 @@ tree1 = nltk.Tree('NP', ['Mary'])
 tree2 = nltk.Tree('NP', ['Bob'])
 tree3 = nltk.Tree('V', ['saw'])
 tree4 = nltk.Tree('VP', [tree3, tree2])
-tree5 = nltk.Tree('S', [tree1, tree4])
-print(tree5)
-tree5.draw()
+tree_final = nltk.Tree('S', [tree1, tree4])
+
+print(tree_final)
+
+tree_final.draw()
 
 # ODER
 sent3 = Tree('S', [Tree('NP', ['Mary']), Tree('VP', [Tree('V', ['saw']), Tree('NP', ['Bob'])])])
+
 print(sent3)
+
 sent3.draw()
 
 # 5.3
@@ -180,7 +200,9 @@ text_sum = nltk.sent_tokenize(texts_cleaned)
 
 # TODO: find out why longest sentence differs from Denise's version
 longest_len = max([len(s) for s in text_sum])  # len(s): length of a string (single sentence)
+
 sent4 = [s for s in text_sum if len(s) == longest_len]
+
 print(sent4)
 
 # Output: 'Ever to look beyond the present moment, to foresee the ways of
