@@ -28,8 +28,8 @@ from tabulate import tabulate
 # from urllib import request
 
 # methods
-def longest_key(dictionary):
-    """returns a tuple (maxkey, int) consisting of the key with the most values in the dictionary"""
+def getMaxKeyValue(dictionary):
+    """returns a tuple (key, int) consisting of the key with the greatest number of values in the dictionary"""
     maxlen = 0
     maxkey = ""
     for k in dictionary.keys():
@@ -37,7 +37,6 @@ def longest_key(dictionary):
             maxlen = len(dictionary[k])
             maxkey = k
     return maxlen, maxkey
-
 
 # Übung 3
 # Tokenize and tag the following sentence:
@@ -59,9 +58,8 @@ nltk.pos_tag(text)
     # 1. Print a table with the integers 1..10 in one column,
             # and the number of distinct words in the corpus having
             # 1..10 distinct tags in the other column.
-brown_tagged = brown.tagged_words(tagset='universal')
 brown_tagged_dict = defaultdict(list)
-for (word, tag) in brown_tagged:
+for (word, tag) in brown.tagged_words(tagset='universal'):
     word = word.lower()
     if brown_tagged_dict[word] == []:
         brown_tagged_dict[word] = [tag]
@@ -75,26 +73,45 @@ for (word, tag) in brown_tagged:
             brown_tagged_dict[word].append(tag)
             break
 
-# https://pypi.python.org/pypi/tabulate
-#dist_words_table = [set([len(tags) for tags in brown_tagged_dict.values()])]
-#print(tabulate(dist_words_table, headers=['# tags', '# distinct words']))
-#print(tabulate([(num_tags, "foo") for num_tags in set(len(tags) for tags in brown_tagged_dict.values())]))
-
 # number of distinct tags a word can have
 num_tags = [n for n in set(len(tags) for tags in brown_tagged_dict.values())]
 
 #number of words with distinct tags
-num_words = []
+num_words = [0]*len(num_tags)
 for l in num_tags:
-    i = 0
-    num_words[i] = len([word for (word, tag) in brown_tagged_dict if len(tag) == num_tags[i]])
-    i += 1
+    #i = 0
+    for (word, tag) in brown_tagged_dict.items():
+        #if len(tag) == num_tags[i]:
+        if len(tag) == l:
+            num_words[l-1] += 1
+    #num_words[i] = len([word for (word, tag) in brown_tagged_dict if len(tag) == num_tags[i]])
+            #i += 1
+num_result = [([None],[None])]*len(num_tags)
+for i in range(0,len(num_tags)):
+    num_result[i] = (num_tags[i], num_words[i])
 
-print(tabulate([(num_tags, num_words)]))
+print(tabulate(num_result, headers=["# tags", "# words w/ dist. tags"]))
 
     # 2. For the word with the greatest number of distinct tags,
         # print out sentences from the corpus containing the word,
         # one for each possible tag. (15 Punkte)
+
+# function to move a whole tagged sentence into a list
+sentences = []
+sent_tmp = []
+for (word, tag) in brown.tagged_words(tagset='universal'):
+    sent_tmp.append([(word, tag)])
+    if word == '.':
+        sentences.append(sent_tmp)
+        sent_tmp = []
+
+# print example sentences for the word with the greatest number of distinct tags
+query = getMaxKeyValue(brown_tagged_dict)[1]
+for tag in brown_tagged_dict[query]:
+    for sent in sentences:
+        if [(query, tag)] in sent:
+            print(tag, ": ", sent)
+            break
 
 # Übung 5
     # 1. Write code to produce two trees, one for each reading
@@ -199,31 +216,29 @@ texts_cleaned = re.sub(r'\n', ' ', texts_all)
 
 text_sum = nltk.sent_tokenize(texts_cleaned)
 
-longest_len = max([len(s) for s in text_sum])  # len(s): length of a string (single sentence)
+longest_sent = max([len(s) for s in text_sum])  # len(s): length of a string (single sentence)
 
-sent4 = [s for s in text_sum if len(s) == longest_len]
+sent4 = [s for s in text_sum if len(s) == longest_sent]
 
 print(sent4)
 
-# Output: 'Ever to look beyond the present moment, to foresee the ways of
-#Destiny, to care so little for power that he only retains it because he is
-#conscious of his usefulness, while he does not overestimate his strength;
-#ever to lay aside all personal feeling and low ambitions, so that he may always
-#be master of his faculties, and foresee, will, and act without ceasing; to
-#compel himself to be just and impartial, to keep order on a large scale, to
-#silence his heart that he may be guided by his intellect alone, to be neither
-#apprehensive nor sanguine, neither suspicious nor confiding, neither grateful
-#nor ungrateful, never to be unprepared for an event, nor taken unawares by an
-#idea; to live, in fact, with the requirements of the masses ever in his mind,
-#to spread the protecting wings of his thought above them, to sway them by the
-#thunder of his voice and the keenness of his glance; seeing all the while not
-#the details of affairs, but the great issues at stake--is not that to be
-#something more than a mere man?'
+# Output: 'His dwelling was so solitary and vault-like,—an old, retired part of an ancient endowment for students,
+# once a brave edifice, planted in an open place, but now the obsolete whim of forgotten architects;
+# smoke-age-and-weather-darkened, squeezed on every side by the overgrowing of the great city, and choked,
+# like an old well, with stones and bricks; its small quadrangles, lying down in very pits formed by the streets
+# and buildings, which, in course of time, had been constructed above its heavy chimney stalks;
+# its old trees, insulted by the neighbouring smoke, which deigned to droop so low when it was very feeble
+# and the weather very moody; its grass-plots, struggling with the mildewed earth to be grass,
+# or to win any show of compromise; its silent pavements, unaccustomed to the tread of feet,
+# and even to the observation of eyes, except when a stray face looked down from the upper world,
+# wondering what nook it was; its sun-dial in a little bricked-up corner,
+# where no sun had straggled for a hundred years, but where, in compensation for the sun’s neglect,
+# the snow would lie for weeks when it lay nowhere else, and the black east wind would spin like a huge humming-top,
+# when in all other places it was silent and still.']
+
 
 # Dieser Satz besteht aus einer komplexen Aneinanderreihung und Verschachtelung
 # von Haupt- und Nebensätzen. Zum Teil kommt es auch zu aufzählungsähnlichen
-# Abfolgen, zum Beispiel in "to be neither apprehensive nor sanguine, neither
-# suspicious nor confiding, neither grateful nor ungrateful, never to be
-# unprepared for an event, nor taken unawares by an idea".
+# Abfolgen.
 # Die Teilsätze an sich weisen keine besonders prägnanten oder ungewöhnlichen
 # Strukturen auf.

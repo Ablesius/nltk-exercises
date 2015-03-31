@@ -13,8 +13,8 @@ Mo 30. Mär 12:39:55 CEST 2015 	DONE:	lower words
 Mo 30. Mär 12:40:09 CEST 2015 	DONE:	NoneTypeError
 Mo 30. Mär 16:31:31 CEST 2015 	added function longest_key(dict)
 Mo 30. Mär 20:34:10 CEST 2015 	cleaned up test and master branches
-Di 31. Mär 11:18:29 CEST 2015 	fixed table to look pretty
-Di 31. Mär 11:22:25 CEST 2015 	TODO:	populate table with #distinctwords
+Di 31. Mär 11:18:29 CEST 2015 	fixed table so it looks pretty
 Di 31. Mär 11:22:52 CEST 2015 	removed old comments
 Di 31. Mär 12:46:16 CEST 2015 	changed table so that it receives entries from variables instead of list comprehension
 Di 31. Mär 16:02:38 CEST 2015 	function for number of words with distinct tags
+Di 31. Mär 19:44:01 CEST 2015 	TODO:	Kommentar korrigieren
