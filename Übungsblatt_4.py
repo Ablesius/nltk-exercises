@@ -41,8 +41,8 @@ def longest_key(dictionary):
 
 # Übung 3
 # Tokenize and tag the following sentence:
-# They wind back the clock, while we chase after the wind.
-# What different pronunciations and parts of speech are involved?
+    # They wind back the clock, while we chase after the wind.
+    # What different pronunciations and parts of speech are involved?
 text = word_tokenize("They wind back the clock, while we chase after the wind.")
 
 nltk.pos_tag(text)
@@ -55,12 +55,10 @@ nltk.pos_tag(text)
 # Bei wind/Verb wird das i als ei ausgesprochen.
 # Bei wind/Nomen wird das i als i ausgesprochen.
 
-# Aufgabe 34
-# Tipp Karlova: defaultdict (S. 194-198, Kapitel 5, ab „Incrementally Updating a Dictionary“).
-# There are 264 distinct words in the Brown Corpus having exactly three possible tags.
-# 1. Print a table with the integers 1..10 in one column,
-# and the number of distinct words in the corpus having
-# 1..10 distinct tags in the other column.
+# Übung 34: There are 264 distinct words in the Brown Corpus having exactly three possible tags.
+    # 1. Print a table with the integers 1..10 in one column,
+            # and the number of distinct words in the corpus having
+            # 1..10 distinct tags in the other column.
 brown_tagged = brown.tagged_words(tagset='universal')
 brown_tagged_dict = defaultdict(list)
 for (word, tag) in brown_tagged:
@@ -77,27 +75,30 @@ for (word, tag) in brown_tagged:
             brown_tagged_dict[word].append(tag)
             break
 
-# table = [["Sun",696000,1989100000],["Earth",6371,5973.6],
-#          ["Moon",1737,73.5],["Mars",3390,641.85]]
-# print tabulate(table, headers=)
 # https://pypi.python.org/pypi/tabulate
-# -----  ------  -------------
-# Sun    696000     1.9891e+09
-# Earth    6371  5973.6
-# Moon     1737    73.5
-# Mars     3390   641.85
-# -----  ------  -------------
-dist_words_table = [set([len(tags) for tags in brown_tagged_dict.values()])]
+#dist_words_table = [set([len(tags) for tags in brown_tagged_dict.values()])]
+#print(tabulate(dist_words_table, headers=['# tags', '# distinct words']))
+#print(tabulate([(num_tags, "foo") for num_tags in set(len(tags) for tags in brown_tagged_dict.values())]))
 
-print(tabulate(dist_words_table, headers=['# tags', '# distinct words']))
+# number of distinct tags a word can have
+num_tags = [n for n in set(len(tags) for tags in brown_tagged_dict.values())]
 
-            # 2. For the word with the greatest number of distinct tags,
-            # print out sentences from the corpus containing the word,
-            # one for each possible tag. (15 Punkte)
+#number of words with distinct tags
+num_words = []
+for l in num_tags:
+    i = 0
+    num_words[i] = len([word for (word, tag) in brown_tagged_dict if len(tag) == num_tags[i]])
+    i += 1
 
-            # Übung 5
-            # 1. Write code to produce two trees, one for each reading
-            # of the phrase "old men and women"
+print(tabulate([(num_tags, num_words)]))
+
+    # 2. For the word with the greatest number of distinct tags,
+        # print out sentences from the corpus containing the word,
+        # one for each possible tag. (15 Punkte)
+
+# Übung 5
+    # 1. Write code to produce two trees, one for each reading
+        # of the phrase "old men and women"
 grammar1 = nltk.CFG.fromstring("""
     PHRASE -> AdjP | NP CON NP
     NP -> Adj N | N
@@ -198,7 +199,6 @@ texts_cleaned = re.sub(r'\n', ' ', texts_all)
 
 text_sum = nltk.sent_tokenize(texts_cleaned)
 
-# TODO: find out why longest sentence differs from Denise's version
 longest_len = max([len(s) for s in text_sum])  # len(s): length of a string (single sentence)
 
 sent4 = [s for s in text_sum if len(s) == longest_len]
