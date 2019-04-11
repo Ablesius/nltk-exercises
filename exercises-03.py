@@ -23,6 +23,19 @@ for word in words:
         print(word[len('pre'):])
 
 # - We saw how we can generate an IndexError by indexing beyond the end of a string. Is it possible to construct an index that goes too far to the left, before the start of the string?
+foo = [1, 2, 3]
+print(len(foo))
+print("creating an IndexError:")
+try:
+    print(foo[len(foo)])
+except IndexError as e:
+    print(e)
+
+print("creating an IndexError by going too far to the left:")
+try:
+    print(foo[-len(foo) - 1])
+except IndexError as e:
+    print(e)
 
 # - We can specify a "step" size for the slice. The following returns every second character within the slice: monty[6:11:2]. It also works in the reverse direction: monty[10:5:-2] Try these for yourself, then experiment with different step values.
 
