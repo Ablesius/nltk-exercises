@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+import re
 
 # - Define a string s = 'colorless'. Write a Python statement that changes this to "colourless" using only the slice and concatenation operations.
 s = 'colorless'
@@ -51,11 +52,19 @@ except IndexError as e:
 
 # Test your answers using nltk.re_show().
 
+
 # - Write regular expressions to match the following classes of strings:
 #
 #         A single determiner (assume that a, an, and the are the only determiners).
+def single_determiner(s):
+    return re.search(r'\ban?\b|\bthe\b', s)
+
+
 #         An arithmetic expression using integers, addition, and multiplication, such as 2*3+8.
-#
+def arithmetic_expression(s):
+    return re.search(r'\d+([+*]\d+)+', s)
+
+
 # - Write a utility function that takes a URL as its argument, and returns the contents of the URL, with all HTML markup removed. Use from urllib import request and then request.urlopen('http://nltk.org/').read().decode('utf8') to access the contents of the URL.
 
 # - Save some text into a file corpus.txt. Define a function load(f) that reads from the file named in its sole argument, and returns a string containing the text of the file.
