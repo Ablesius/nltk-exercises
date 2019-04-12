@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
+from bs4 import BeautifulSoup
 import re
+import requests
 
 # - Define a string s = 'colorless'. Write a Python statement that changes this to "colourless" using only the slice and concatenation operations.
 s = 'colorless'
@@ -66,6 +68,11 @@ def arithmetic_expression(s):
 
 
 # - Write a utility function that takes a URL as its argument, and returns the contents of the URL, with all HTML markup removed. Use from urllib import request and then request.urlopen('http://nltk.org/').read().decode('utf8') to access the contents of the URL.
+def url_text(url):
+    print("""This function is a bad idea, because it always needs to fetch the text from the URL first. It would be much better to fetch the HTML text once, save it to a variable, then use BeautifulSoup to make it pretty.""")
+    raw_html = requests.get(url).text
+    return BeautifulSoup(raw_html, 'html.parser').get_text()
+
 
 # - Save some text into a file corpus.txt. Define a function load(f) that reads from the file named in its sole argument, and returns a string containing the text of the file.
 #     Use nltk.regexp_tokenize() to create a tokenizer that tokenizes the various kinds of punctuation in this text. Use one multi-line regular expression, with inline comments, using the verbose flag (?x).
